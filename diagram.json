@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "author": "Leonardo Giampaglia",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": { "env": "micropython-20260406-v1.28.0" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -95.7,
+      "left": -101.4,
+      "attrs": { "temperature": "47.9", "humidity": "59" }
+    },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": 61.6, "left": -170.58, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 133.2,
+      "left": 189,
+      "rotate": 90,
+      "attrs": { "color": "red" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": 170.8, "left": 201.6, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 129.05,
+      "left": 113.8,
+      "rotate": 180,
+      "attrs": { "value": "1000" }
+    },
+    { "type": "wokwi-photoresistor-sensor", "id": "ldr1", "top": -73.6, "left": -28, "attrs": {} },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 242.7, "left": -69.8, "attrs": {} },
+    { "type": "wokwi-buzzer", "id": "bz1", "top": 2.4, "left": 165, "attrs": { "volume": "0.1" } },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 31.94,
+      "left": 249.83,
+      "attrs": { "i2cAddress": "0x3c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "r1:2", "esp:GND.3", "blue", [ "v-48", "h1.2" ] ],
+    [ "led1:C", "r1:1", "blue", [ "h0" ] ],
+    [ "led1:A", "esp:2", "green", [ "h0" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v9.6", "h67.2", "v-134.4" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "dht1:SDA", "esp:15", "magenta", [ "v67.2", "h211.3", "v-48" ] ],
+    [ "pir1:VCC", "esp:5V", "#8f4814", [ "v0" ] ],
+    [ "pir1:GND", "esp:GND.1", "cyan", [ "v0" ] ],
+    [ "pir1:OUT", "esp:13", "green", [ "v0" ] ],
+    [ "ldr1:GND", "esp:GND.2", "black", [ "h19.2", "v76.4" ] ],
+    [ "ldr1:VCC", "esp:3V3", "white", [ "h28.8", "v57.6", "h-172.8" ] ],
+    [ "ldr1:AO", "esp:34", "gold", [ "h0", "v18.5", "h-153.6", "v76.8" ] ],
+    [ "gas1:VCC", "esp:5V", "violet", [ "h28.8", "v-48.9", "h-86.4" ] ],
+    [ "gas1:GND", "esp:GND.1", "black", [ "h76.8", "v-48.8", "h-153.6", "v-57.6" ] ],
+    [
+      "gas1:AOUT",
+      "esp:35",
+      "green",
+      [ "h9.6", "v-28.8", "h-124.8", "v-105.6", "h28.8", "v-28.8" ]
+    ],
+    [ "bz1:2", "esp:GND.3", "gray", [ "v0" ] ],
+    [ "bz1:1", "esp:18", "cyan", [ "v0" ] ],
+    [ "servo1:GND", "esp:GND.3", "white", [ "h-76.8", "v-134.4" ] ],
+    [ "servo1:V+", "esp:5V", "red", [ "h0" ] ],
+    [ "servo1:PWM", "esp:19", "green", [ "h-76.8", "v-143.8" ] ],
+    [ "oled1:GND", "esp:GND.2", "magenta", [ "v0" ] ],
+    [ "oled1:VCC", "esp:3V3", "cyan", [ "v-38.4", "h-335.85" ] ],
+    [ "oled1:SDA", "esp:21", "green", [ "v-28.8", "h-76.73", "v76.8" ] ],
+    [ "oled1:SCL", "esp:22", "blue", [ "v-19.2", "h-191.7", "v28.8" ] ]
+  ],
+  "dependencies": {}
+}
