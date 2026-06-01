@@ -23,17 +23,17 @@ Abra o terminal do MicroPython e execute os comandos abaixo **na ordem apresenta
 
 ### 1. Instalar o arquivo main.py
 
-```python
+
 exec("import network, urequests, time\nsta=network.WLAN(network.STA_IF);sta.active(True);sta.connect('Wokwi-GUEST','')\nwhile not sta.isconnected(): time.sleep(0.1)\nr=urequests.get('https://pastebin.com/raw/PqRVnYiy')\nf=open('main.py','w');f.write(r.text);f.close();r.close()\nprint('main.py gravado permanentemente com sucesso!')")
-```
+
 
 ---
 
 ### 2. Instalar a biblioteca SSD1306
 
-```python
+
 exec("import network, urequests, time\nsta=network.WLAN(network.STA_IF);sta.active(True);sta.connect('Wokwi-GUEST','')\nwhile not sta.isconnected(): time.sleep(0.1)\nr=urequests.get('https://raw.githubusercontent.com/stlehmann/micropython-ssd1306/master/ssd1306.py')\nf=open('ssd1306.py','w');f.write(r.text);f.close();r.close()\nprint('Biblioteca ssd1306 instalada com sucesso!')")
-```
+
 
 ---
 
